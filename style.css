@@ -39,7 +39,7 @@
   background-color: rgb(134, 169, 209);
 }
 
-.button {
+button {
   text-align: center;
   display: flex;
   justify-content: center;
