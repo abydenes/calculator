@@ -27,11 +27,12 @@ document.addEventListener('click', (e) => {
   } else if (e.target.classList.contains('operator')) {
     op.splice(0, 1, e.target.textContent);
   }
-  if (e.target.classList.contains('equals')) {
+  if (e.target.classList.contains('equals') && !num2.length == 0) {
     result = operate(+num1.join(''), op[0], +num2.join(''));
-    display.textContent = result;
+    display.textContent = roundToTwo(result);
     num1.splice(0, 10, result);
     num2 = [];
+    if (result == 'Infinity') display.textContent = 'hehe';
   }
   if (e.target.classList.contains('ac')) {
     display.textContent = '';
@@ -42,6 +43,10 @@ document.addEventListener('click', (e) => {
     result = [];
   }
 });
+
+function roundToTwo(num) {
+  return +(Math.round(num + 'e+4') + 'e-4');
+}
 
 const operate = function(a, operator, b) {
   switch (operator) {
